@@ -4,11 +4,26 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import ItemsList from './ItemsList.js'
 import { firestoreConnect } from 'react-redux-firebase';
+import { getFirestore } from 'redux-firestore';
 
 class ListScreen extends Component {
     state = {
         name: '',
         owner: '',
+    }
+
+    moveListToTop = () =>{
+        const firestore = getFirestore();
+        firestore.collection('todoLists').doc(this.props.todoList.id).update({
+            visited: "true"
+        });
+        this.props.orderedTodo.map(todoList => {
+            if(todoList.id != this.props.todoList.id){
+                firestore.collection('todoLists').doc(todoList.id).update({
+                    visited: "false"
+                });
+            }
+        });      
     }
 
     handleChange = (e) => {
@@ -23,6 +38,9 @@ class ListScreen extends Component {
     render() {
         const auth = this.props.auth;
         const todoList = this.props.todoList;
+        console.log(this.props.orderedTodo)
+        if(this.props.orderedTodo && this.props.todoList.visited == "false")
+            this.moveListToTop();
         if (!auth.uid) {
             return <Redirect to="/" />;
         }
@@ -54,6 +72,8 @@ const mapStateToProps = (state, ownProps) => {
       todoList.id = id
   return {
     todoList,
+    todoLists,
+    orderedTodo: state.firestore.ordered.todoLists,
     auth: state.firebase.auth,
   };
 };
@@ -61,6 +81,6 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'todoLists' },
+    { collection: 'todoLists' ,orderBy: ['visited','desc']},
   ]),
 )(ListScreen);

@@ -18,6 +18,7 @@ class HomeScreen extends Component {
             items: [],
             name: "unknown",
             owner: "unknown",
+            visited: "false"
         }
         //this.props.dispatch(actionCreators.createTodoList(newTodo));
         fireStore.collection('todoLists').add(newTodo).then(doc => {
@@ -70,6 +71,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-      { collection: 'todoLists' },
+      { collection: 'todoLists' ,orderBy: ['visited','desc']},
     ]),
 )(HomeScreen);
