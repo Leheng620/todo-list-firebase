@@ -1,7 +1,7 @@
 import * as actionCreators from '../actions/actionCreators.js'
 
 export const loginHandler = ({ credentials, firebase }) => (dispatch, getState) => {
-    firebase.auth().signInWithEmailAndPassword(
+    firebase.auth().signInWithEmailAndPassword( //Return promise object
       credentials.email,
       credentials.password,
     ).then(() => {

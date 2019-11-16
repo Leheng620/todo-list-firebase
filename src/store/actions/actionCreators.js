@@ -12,6 +12,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 
+export const CREATE_TODO_LIST = 'CREATE_TODO_LIST';
+
 // THESE CREATORS MAKE ACTIONS ASSOCIATED WITH USER ACCOUNTS
 
 export function registerSuccess() {
@@ -41,5 +43,11 @@ export function createTodoListError(error) {
     return {
         type: 'CREATE_TODO_LIST_ERROR',
         error
+    }
+}
+export function test(todoLists){
+    return{
+        type: 'test',
+        todoLists
     }
 }
