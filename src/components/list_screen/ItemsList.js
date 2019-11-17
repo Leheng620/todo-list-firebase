@@ -21,9 +21,9 @@ class ItemsList extends React.Component {
                     </div>
                 </Navbar>
                 {items && items.map(function(item) {
-                    item.id = item.key;
+                    //item.id = item.key;
                     return (
-                        <Link to={'/todoList/'+todoList.id+'/'+item.id} key={item.key}>
+                        <Link to={'/todoList/'+todoList.id+'/'+item.key} key={item.key}>
                             <ItemCard todoList={todoList} item={item}/>
                         </Link>
                     );})

@@ -77,7 +77,7 @@ class ItemCard extends React.Component {
                     </div>
                     {this.showCompleted(item.completed)}
 
-                    <div style={{position: 'absolute'}}>
+                    {/* <div style={{position: 'absolute'}}>
                         <Button
                             floating
                             fab={{direction: 'left'}}
@@ -89,7 +89,19 @@ class ItemCard extends React.Component {
                             <Button floating small className="green" style={{right: '-30px'}} onClick={this.delete}/>
                         </Button>
                         
-                    </div>
+                    </div> */}
+                    <nav className="contain">
+                        <div className='hor'>
+                            <Button className="buttons indigo lighten-4 black-text" id='upbb' onClick={this.up}><strong className='textali'>&#x21e7;</strong></Button>
+                            
+                            <Button className="buttons orange lighten-2 black-text" id='downbb' onClick={this.down}><strong className='textali'>&#x21e9;</strong></Button>
+                            
+                            <Button className="buttons black-text" id='deletebb' onClick={this.delete}><strong className='textali'>&#10005;</strong></Button>
+
+                            <Button className="buttons bigsize light-green darken-3 black-text"><strong className='textali'>&#9776;</strong></Button>
+                        </div>
+                        
+                    </nav>
                 </div>
             </div>
         );
