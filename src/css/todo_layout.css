@@ -166,3 +166,13 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   position: absolute;
   top: 0.2%;
 }
+
+#list_trash{
+  position: absolute;
+  left: 80%;
+  width: 15%;
+  text-align: center;
+  top: 12%;
+  font-size: 50pt;
+  cursor: pointer;
+}
