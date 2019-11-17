@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button,Icon } from 'react-materialize';
+import { getFirestore } from 'redux-firestore';
 
 class ItemCard extends React.Component {
 
@@ -14,6 +15,50 @@ class ItemCard extends React.Component {
                 Pending
             </div>)
         }
+    }
+    fixKey = (list) => {
+        for(let i = 0; i < list.length; i++){
+          list[i].key = i;
+        }
+    }
+
+    up = (e) =>{
+        let todoList = this.props.todoList;
+        let items = todoList.items;
+        let item = this.props.item;
+        let index = this.props.item.key;
+        items.splice(index, 1);
+        items.splice(index-1, 0, item);
+        this.fixKey(items);
+        e.preventDefault();
+        getFirestore().collection('todoLists').doc(this.props.todoList.id).update({
+            items: items
+        });
+    }
+    down = (e) =>{
+        let todoList = this.props.todoList;
+        let items = todoList.items;
+        let item = this.props.item;
+        let index = this.props.item.key;
+        items.splice(index, 1);
+        items.splice(index+1, 0, item);
+        this.fixKey(items);
+        e.preventDefault();
+        getFirestore().collection('todoLists').doc(this.props.todoList.id).update({
+            items: items
+        });
+    }
+    delete = (e) =>{
+        let todoList = this.props.todoList;
+        let items = todoList.items;
+        let item = this.props.item;
+        let index = this.props.item.key;
+        items.splice(index, 1);
+        this.fixKey(items);
+        e.preventDefault();
+        getFirestore().collection('todoLists').doc(this.props.todoList.id).update({
+            items: items
+        });
     }
 
     render() {
@@ -32,7 +77,19 @@ class ItemCard extends React.Component {
                     </div>
                     {this.showCompleted(item.completed)}
 
-                    
+                    <div style={{position: 'absolute'}}>
+                        <Button
+                            floating
+                            fab={{direction: 'left'}}
+                            className="red"
+                            style={{position:'relative', left: '1340%', top: '-50px'}}
+                        >
+                            <Button floating small className="red" style={{right: '-30px'}} onClick={this.up}/>
+                            <Button floating small className="yellow darken-1" style={{right: '-30px'}} onClick={this.down}/>
+                            <Button floating small className="green" style={{right: '-30px'}} onClick={this.delete}/>
+                        </Button>
+                        
+                    </div>
                 </div>
             </div>
         );
