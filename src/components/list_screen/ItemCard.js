@@ -16,6 +16,22 @@ class ItemCard extends React.Component {
             </div>)
         }
     }
+
+    buildDisableUpButton = () =>{
+        if(this.props.item.key == 0){
+            return (<Button className="buttons grey lighten-1 black-text" id='upbb' onClick={this.up} disabled><strong className='textali'>&#x21e7;</strong></Button>)
+        }else{
+            return (<Button className="buttons indigo lighten-4 black-text" id='upbb' onClick={this.up}><strong className='textali'>&#x21e7;</strong></Button>)
+        }
+    }
+    buildDisableDownButton = () => {
+        if(this.props.item.key == this.props.todoList.items.length-1){
+            return (<Button className="buttons grey lighten-1 black-text" id='downbb' onClick={this.down} disabled><strong className='textali'>&#x21e9;</strong></Button>)
+        }else{
+            return(<Button className="buttons orange lighten-2 black-text" id='downbb' onClick={this.down}><strong className='textali'>&#x21e9;</strong></Button>)
+        }
+    }
+
     fixKey = (list) => {
         for(let i = 0; i < list.length; i++){
           list[i].key = i;
@@ -92,10 +108,9 @@ class ItemCard extends React.Component {
                     </div> */}
                     <nav className="contain">
                         <div className='hor'>
-                            <Button className="buttons indigo lighten-4 black-text" id='upbb' onClick={this.up}><strong className='textali'>&#x21e7;</strong></Button>
                             
-                            <Button className="buttons orange lighten-2 black-text" id='downbb' onClick={this.down}><strong className='textali'>&#x21e9;</strong></Button>
-                            
+                            {this.buildDisableUpButton()}
+                            {this.buildDisableDownButton()}                           
                             <Button className="buttons black-text" id='deletebb' onClick={this.delete}><strong className='textali'>&#10005;</strong></Button>
 
                             <Button className="buttons bigsize light-green darken-3 black-text"><strong className='textali'>&#9776;</strong></Button>

@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import ItemsList from './ItemsList.js'
 import { firestoreConnect } from 'react-redux-firebase';
 import { getFirestore } from 'redux-firestore';
-import { Button,Icon } from 'react-materialize';
+import { Button,Modal } from 'react-materialize';
 
 class ListScreen extends Component {
     state = {
@@ -70,6 +70,11 @@ class ListScreen extends Component {
         return (
             <div className='container' style={{width: '80%'}}>
                 <h4 className="grey-text text-darken-3" style={{lineHeight:"210%"}}>Todo List</h4>
+                {/* <Modal header="Modal Header" trigger={<Button />}>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                    </p>
+                </Modal> */}
                 <div className="input-field">
                     <label htmlFor="email" className="active">Name</label>
                     <input className="active" type="text" name="name" id="name" onChange={this.onChangeName} value={todoList.name}/>

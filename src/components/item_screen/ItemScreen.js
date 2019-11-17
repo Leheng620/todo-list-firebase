@@ -17,7 +17,7 @@ class ItemScreen extends Component{
         item.description = document.getElementById('Description').value;
         if(item.description === "")
             item.description = "Unknown";
-        item.assigned_to = document.getElementById('Assignto').value;
+        item.assigned_to = document.getElementById('Assign_to').value;
         if(item.assigned_to === "")
             item.assigned_to = "Unknown";
         item.due_date = document.getElementById('duedate').value;
@@ -34,6 +34,14 @@ class ItemScreen extends Component{
         this.props.history.goBack();
     }
 
+    activeLabel = (name,content) =>{
+        if(content === ""){
+            return (<label htmlFor={name}>{name}</label>)
+        }else{
+            return(<label htmlFor={name} className="active">{name}</label>)
+        }
+    }
+
     render(){
         const { item } = this.props;
         const auth = this.props.auth;
@@ -47,12 +55,12 @@ class ItemScreen extends Component{
             <div className="container">
                 <h4 style={{lineHeight:"210%"}}>Item</h4>
                 <div className="input-field">
-                    <label htmlFor="Description" className="active">Description</label>
+                    {this.activeLabel('Description',item.description)}
                     <input className="active" type="text" name="Description" id="Description" defaultValue={item.description}/>
                 </div>
                 <div className="input-field">
-                    <label htmlFor="Assignto" className="active">Assign to</label>
-                    <input className="active" type="text" name="Assignto" id="Assignto" defaultValue={item.assigned_to}/>
+                    {this.activeLabel('Assign_to', item.assigned_to)}
+                    <input className="active" type="text" name="Assign_to" id="Assign_to" defaultValue={item.assigned_to}/>
                 </div>
                 <div>
                     <label htmlFor="duedate" className="active">Due Date</label>
