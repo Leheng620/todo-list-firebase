@@ -172,7 +172,7 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   left: 80%;
   width: 15%;
   text-align: center;
-  top: 12%;
+  top: 80px;
   font-size: 50pt;
   cursor: pointer;
 }
