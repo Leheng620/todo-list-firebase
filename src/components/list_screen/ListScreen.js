@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import ItemsList from './ItemsList.js'
 import { firestoreConnect } from 'react-redux-firebase';
 import { getFirestore } from 'redux-firestore';
+import {TextInput} from 'react-materialize';
 
 class ListScreen extends Component {
     state = {
@@ -28,17 +29,33 @@ class ListScreen extends Component {
 
     handleChange = (e) => {
         const { target } = e;
+        console.log('why')
 
         this.setState(state => ({
             ...state,
             [target.id]: target.value,
         }));
+        //const newChange = {...this.state}
+        //this.onChangeHandler(newChange);
+    }
+
+    onChangeName = (e) =>{
+        const { target } = e;
+        getFirestore().collection('todoLists').doc(this.props.todoList.id).update({
+            name: target.value,
+        })
+    }
+    onChangeOwner = (e) =>{
+        const { target } = e;
+        getFirestore().collection('todoLists').doc(this.props.todoList.id).update({
+            owner: target.value,
+        })
     }
 
     render() {
         const auth = this.props.auth;
         const todoList = this.props.todoList;
-        console.log(this.props.orderedTodo)
+        console.log("render called")
         if(this.props.orderedTodo && this.props.todoList.visited == "false")
             this.moveListToTop();
         if (!auth.uid) {
@@ -48,15 +65,15 @@ class ListScreen extends Component {
             return <React.Fragment/>
         }
         return (
-            <div className="container white">
-                <h5 className="grey-text text-darken-3">Todo List</h5>
+            <div className="container">
+                <h4 className="grey-text text-darken-3" style={{lineHeight:"310%"}}>Todo List</h4>
                 <div className="input-field">
-                    <label htmlFor="email">Name</label>
-                    <input className="active" type="text" name="name" id="name" onChange={this.handleChange} value={todoList.name} />
+                    <label htmlFor="email" className="active">Name</label>
+                    <input className="active" type="text" name="name" id="name" onChange={this.onChangeName} value={todoList.name}/>
                 </div>
                 <div className="input-field">
-                    <label htmlFor="password">Owner</label>
-                    <input className="active" type="text" name="owner" id="owner" onChange={this.handleChange} value={todoList.owner} />
+                    <label htmlFor="password" className="active">Owner</label>
+                    <input className="active" type="text" name="owner" id="owner" onChange={this.onChangeOwner} value={todoList.owner} />
                 </div>
                 <ItemsList todoList={todoList} />
             </div>
@@ -72,7 +89,6 @@ const mapStateToProps = (state, ownProps) => {
       todoList.id = id
   return {
     todoList,
-    todoLists,
     orderedTodo: state.firestore.ordered.todoLists,
     auth: state.firebase.auth,
   };
