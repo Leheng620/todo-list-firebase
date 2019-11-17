@@ -13,7 +13,6 @@ class HomeScreen extends Component {
 
     handleNewList = () =>{
         const fireStore = getFirestore();
-        const { todoLists } = this.props;
         let newTodo = {
             items: [],
             name: "unknown",

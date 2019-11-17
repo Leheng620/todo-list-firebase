@@ -28,10 +28,13 @@ class ItemScreen extends Component{
             console.log(items);
             item.key = items.length - 1;
         }
+        this.props.history.goBack();
         getFirestore().collection('todoLists').doc(this.props.todoList.id).update({
             items: items
         })
-        this.props.history.goBack();
+        getFirestore().collection('todoLists').doc(this.props.todoList.id).update({
+            items: items
+        })
     }
 
     activeLabel = (name,content) =>{
