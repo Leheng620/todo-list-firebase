@@ -1,15 +1,16 @@
 import React from 'react';
+import { Button,Icon } from 'react-materialize';
 
 class ItemCard extends React.Component {
 
     showCompleted = (isCompleted) =>{
         if(isCompleted){
-            return (<div className='green-text' style={{position: 'absolute', left: '65%', top: '36%'}}>
+            return (<div className='green-text' style={{position: 'absolute', left: '60%', top: '63%'}}>
                     Completed
                 </div>)
         }
         else{
-            return (<div className='red-text' style={{position: 'absolute', left: '65%', top: '36%'}}>
+            return (<div className='red-text' style={{position: 'absolute', left: '60%', top: '63%'}}>
                 Pending
             </div>)
         }
@@ -20,14 +21,18 @@ class ItemCard extends React.Component {
         return (
             <div className="card z-depth-0 todo-list-link green lighten-4">
                 <div className="grey-text text-darken-3">
-                    <span className="card-title">{item.description}</span>
-                    <div>
-                        Assigned To: <strong className="bold">{item.assigned_to}</strong>
+                    <div style={{overflow: 'hidden'}}>
+                        <span className="card-title">{item.description}</span>
                     </div>
-                    <div style={{position: 'absolute', left: '35%', top: '36%'}}>
+                    <div>
+                        Assigned To: <strong style={{fontWeight:'bold'}}>{item.assigned_to}</strong>
+                    </div>
+                    <div style={{position: 'absolute', left: '35%', top: '63%'}}>
                         {item.due_date}
                     </div>
                     {this.showCompleted(item.completed)}
+
+                    
                 </div>
             </div>
         );

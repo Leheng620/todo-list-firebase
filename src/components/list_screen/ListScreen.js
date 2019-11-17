@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import ItemsList from './ItemsList.js'
 import { firestoreConnect } from 'react-redux-firebase';
 import { getFirestore } from 'redux-firestore';
-import {TextInput} from 'react-materialize';
+import { Button,Icon } from 'react-materialize';
 
 class ListScreen extends Component {
     state = {
@@ -52,6 +52,9 @@ class ListScreen extends Component {
         })
     }
 
+    createNewItem = () =>{
+        this.props.history.push({pathname: '/todoList/' + this.props.todoList.id+'/-1'})
+    }
     render() {
         const auth = this.props.auth;
         const todoList = this.props.todoList;
@@ -65,8 +68,8 @@ class ListScreen extends Component {
             return <React.Fragment/>
         }
         return (
-            <div className="container">
-                <h4 className="grey-text text-darken-3" style={{lineHeight:"310%"}}>Todo List</h4>
+            <div className='container' style={{width: '80%'}}>
+                <h4 className="grey-text text-darken-3" style={{lineHeight:"210%"}}>Todo List</h4>
                 <div className="input-field">
                     <label htmlFor="email" className="active">Name</label>
                     <input className="active" type="text" name="name" id="name" onChange={this.onChangeName} value={todoList.name}/>
@@ -76,6 +79,12 @@ class ListScreen extends Component {
                     <input className="active" type="text" name="owner" id="owner" onChange={this.onChangeOwner} value={todoList.owner} />
                 </div>
                 <ItemsList todoList={todoList} />
+                <div className="center-align">
+                    <Button floating large className="red center-align" waves="light" onClick={this.createNewItem}>
+                        <strong style={{fontSize : 'x-large'}}>+</strong>
+                    </Button>
+                </div>
+                
             </div>
         );
     }
