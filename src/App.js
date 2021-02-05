@@ -20,7 +20,7 @@ class App extends Component {
     // But if not then we doesn't render the one.
     if (auth.isLoaded) {
       return (
-        <BrowserRouter>
+        <BrowserRouter basename="/todo-list-firebase">
           <div className="App">
             <Navbar />
             <Switch>
