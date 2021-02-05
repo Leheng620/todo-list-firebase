@@ -1,4 +1,3 @@
-import { bindActionCreators } from "C:/Users/dell/AppData/Local/Microsoft/TypeScript/3.6/node_modules/redux";
 import * as actionCreators from '../actions/actionCreators'
 
 

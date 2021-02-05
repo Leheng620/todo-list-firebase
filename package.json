@@ -2,6 +2,7 @@
   "name": "todo_hw3",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Leheng620.github.io/todo-list-firebase",
   "dependencies": {
     "firebase": "^7.2.3",
     "materialize-css": "^1.0.0",
