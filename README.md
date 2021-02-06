@@ -1,7 +1,3 @@
-![login screen](about/login_page.jpg)
-![list screen](about/list_screen.jpg)
-![item screen](about/item_screen.jpg)
-
 This project is a simple website that allows user to create to do list. All data are saved on [Google Firebase](https://firebase.google.com/).
 
 ## Login
