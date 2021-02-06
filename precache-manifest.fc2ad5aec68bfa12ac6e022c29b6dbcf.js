@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4cba0abc987453534c24f243501747d5",
+    "revision": "d8165e538880167b5478f42becc11637",
     "url": "/todo-list-firebase/index.html"
   },
   {
-    "revision": "bba3b407781e6828bd84",
+    "revision": "2d9cfda6e408e7388c1a",
     "url": "/todo-list-firebase/static/css/main.4a467e57.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/todo-list-firebase/static/js/2.a41b8f65.chunk.js"
   },
   {
-    "revision": "bba3b407781e6828bd84",
-    "url": "/todo-list-firebase/static/js/main.c15b7c28.chunk.js"
+    "revision": "2d9cfda6e408e7388c1a",
+    "url": "/todo-list-firebase/static/js/main.57c55302.chunk.js"
   },
   {
     "revision": "d36bdaa9c3032b4ca539",
