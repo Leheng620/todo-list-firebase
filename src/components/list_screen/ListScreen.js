@@ -29,7 +29,6 @@ class ListScreen extends Component {
 
     handleChange = (e) => {
         const { target } = e;
-        console.log('why')
 
         this.setState(state => ({
             ...state,
@@ -64,7 +63,6 @@ class ListScreen extends Component {
     render() {
         const auth = this.props.auth;
         const todoList = this.props.todoList;
-        console.log("render called")
         if(this.props.orderedTodo && this.props.todoList.visited == "false")
             this.moveListToTop();
         if (!auth.uid) {

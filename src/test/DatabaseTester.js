@@ -13,7 +13,6 @@ class DatabaseTester extends React.Component {
         const fireStore = getFirestore();
         fireStore.collection('todoLists').get().then(function(querySnapshot){
             querySnapshot.forEach(function(doc) {
-                console.log("deleting " + doc.id);
                 fireStore.collection('todoLists').doc(doc.id).delete();
             })
         });

@@ -34,7 +34,6 @@ class HomeScreen extends Component {
             return <Redirect to="/login" />;
         }
         this.dis(this.props.todoLists);
-        console.log('home render called')
         return (
             <div className="dashboard container">
                 <div className="row">

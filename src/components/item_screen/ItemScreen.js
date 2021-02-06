@@ -22,10 +22,8 @@ class ItemScreen extends Component{
             item.assigned_to = "Unknown";
         item.due_date = document.getElementById('duedate').value;
         item.completed = document.getElementById('checkbox').checked;
-        console.log(item.key);
         if(item.key === -1){
             items.push(item);
-            console.log(items);
             item.key = items.length - 1;
         }
         this.props.history.goBack();
